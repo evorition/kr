@@ -1,0 +1,4 @@
+I would test word counting program with the following test cases:
+1. Give it a very large string.
+2. Give it a string that consists out of blanks such as ('\t', ' ').
+3. Give it an empty string ('\n').
