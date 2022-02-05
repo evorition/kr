@@ -16,7 +16,7 @@ int getch(void) {
   if (buf != -1) {
     ret = buf;
     buf = -1;
-    return temp;
+    return ret;
   } else {
     return getchar();
   }
