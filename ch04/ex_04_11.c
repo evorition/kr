@@ -18,9 +18,6 @@ int main(void) {
 
 #include <ctype.h> 
 
-int getch(void);
-void ungetch(int);
-
 int getop(char s[]) {
   static int temp = -1;
   int i, c;
