@@ -16,15 +16,15 @@ int main(void) {
 }
 
 int mygetline(char *s, int lim) {
+  char *p = s;
   int c, i;
 
-  for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i) {
+  while (s - p < lim - 1 && (c = getchar()) != EOF && c != '\n') {
     *s++ = c;
   }
   if (c == '\n') {
     *s++ = '\n';
-    ++i;
   }
   *s = '\0';
-  return i;
+  return s - p;
 }
