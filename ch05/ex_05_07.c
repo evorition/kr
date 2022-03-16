@@ -84,7 +84,7 @@ void qsort(char *v[], int left, int right) {
   }
   swap(v, left, last);
   qsort(v, left, last - 1);
-  qsort(v, left + 1, right);
+  qsort(v, last + 1, right);
 }
 
 void swap(char *v[], int i, int j) {
