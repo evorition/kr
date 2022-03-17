@@ -29,7 +29,7 @@ int day_of_year(int year, int month, int day) {
     return -1;
   }
 
-  leap = year % 4 == 0 && year != 100 || year % 400 == 0;
+  leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
 
   if (day < 1 || day > daytab[leap][month]) {
     printf("error day_of_year incorrect day\n");
@@ -52,7 +52,7 @@ void month_day(int year, int yearday, int *pmonth, int *pday) {
     return;
   }
 
-  leap = year % 4 == 0 && year != 100 || year % 400 == 0;
+  leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
 
   if ((leap == 1 && yearday > 366) || (leap == 0 && yearday > 365)) {
     printf("error: month_day incorrect yearday\n");
