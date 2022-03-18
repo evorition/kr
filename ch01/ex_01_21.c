@@ -9,29 +9,35 @@ int main(void) {
   return 0;
 }
 
-/* we assume that line that we get consist only out of spaces */
 void entab(void) {
-  int c, space_count, tab_count;
+  int c, count, blanks, tabstop;
 
-  space_count = 0;
+  count = blanks = 0;
   while ((c = getchar()) != EOF) {
-    if (c == '\n') {
-      tab_count = space_count / TABSTOP;
-      space_count = space_count - tab_count * TABSTOP;
-
-      while (tab_count > 0) {
-        putchar('\t');
-        --tab_count;
-      }
-      while (space_count > 0) {
-        putchar(' ');
-        --space_count;
-      }
-
-      putchar('\n');
-      space_count = 0;
+    if (c == '\t') {
+      putchar(c);
+      count += TABSTOP - count % TABSTOP;
+      blanks = 0;
+    } else if (c == ' ') {
+      ++blanks;
+    } else if (c == '\n') {
+      putchar(c);
+      count = blanks = 0;
     } else {
-      ++space_count;
+      if (blanks > 0) {
+        while ((tabstop = TABSTOP - count % TABSTOP) <= blanks) {
+          putchar('\t');
+          count += tabstop;
+          blanks -= tabstop;
+        }
+        while (blanks > 0) {
+          putchar(' ');
+          ++count;
+          --blanks;
+        }
+      }
+      putchar(c);
+      ++count;
     }
   }
 }
