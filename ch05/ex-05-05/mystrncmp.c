@@ -15,7 +15,8 @@ int mystrncmp(char *s, char *t, int n) {
   int i = 0;
 
   while (*s == *t && ++i < n) {
-    ;
+    ++s;
+    ++t;
   }
 
   if (*s == '\0' || i == n) {
