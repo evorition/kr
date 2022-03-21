@@ -19,7 +19,7 @@ int mystrncmp(char *s, char *t, int n) {
     ++t;
   }
 
-  if (*s == '\0' || i == n) {
+  if (*s == '\0' && i == n) {
     return 0;
   }
 
